@@ -20,13 +20,19 @@ val result = BashUtil.executeCommand("echo 'Hello World'") { line ->
 println(result)
 ````
 
-# RegexExtensions
+# MRegex
 
-* Get Regex-Group
-
+* `findFirst(input: String)` find first match for input on regex 
+* `findAll(input: String)` find all matches for input on regex 
+ 
 
 ### Example:
 ````kotlin
-val versionTagString = Regex("gitlab\\/gitlab-ce:(.+)")
-    .getGroupValueFor(dockerComposeContent, 1)
+val regex = MRegex("http:\\/\\/([a-z0-9-\\.]+):(\\d+)")
+val analze = regex.findFirst("http://my.test.com:3128")
+
+if (analze is FindFirstResult.SingleMatch) {
+    val (hostname: String, port: String) = analze.groups
+    println("Host: $hostname; Port $port")
+}
 ````
