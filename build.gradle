@@ -6,6 +6,8 @@ apply plugin: 'application'
 
 group 'de.maaxgr'
 version '1.0.1'
+mainClassName = "de.maaxgr.kotlinutils.MainKt"
+
 
 repositories {
     mavenCentral()
