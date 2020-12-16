@@ -5,8 +5,7 @@ apply plugin: 'kotlin'
 apply plugin: 'application'
 
 group 'de.maaxgr'
-version '1.0'
-mainClassName = "de.caelis.gitlabdockerupdater.MainKt"
+version '1.0.1'
 
 repositories {
     mavenCentral()
@@ -15,7 +14,6 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-
     testImplementation "org.junit.jupiter:junit-jupiter-engine:5.1.0"
 }
 
@@ -24,12 +22,8 @@ test {
 }
 
 jar {
-    manifest {
-        attributes 'Main-Class': mainClassName
-    }
-
     from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
