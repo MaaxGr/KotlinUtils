@@ -4,24 +4,21 @@ class MRegex(private val pattern: String) {
 
     private val regex = Regex(pattern)
 
+
     fun findFirst(input: String): FindFirstResult {
+        val match = regex.find(input) ?: return FindFirstResult.NoMatch
 
-        if (!regex.matches(input)) {
-            return FindFirstResult.NoMatch
-        }
-
-        val match = regex.find(input)!!
         val groups = match.destructured.toList()
 
-        return FindFirstResult.SingleMatch(groups)
+        return FindFirstResult.SingleMatch(match.value, groups)
     }
 
     fun findAll(input: String): FindAllResult {
-        if (!regex.matches(input)) {
+        val matches = regex.findAll(input).toList()
+
+        if (matches.isEmpty()) {
             return FindAllResult.NoMatch
         }
-
-        val matches = regex.findAll(input).toList()
 
         val matchGroupMapping = matches.map {
             it.value to it.destructured.toList()
