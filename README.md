@@ -52,3 +52,9 @@ if (analze is FindFirstResult.SingleMatch) {
     println("Host: $hostname; Port $port")
 }
 ````
+
+### StringExtensions
+
+* `camelToSnakeCase()`
+* `snakeToUpperCamelCase()`
+* `snakeToLowerCamelCase()`
