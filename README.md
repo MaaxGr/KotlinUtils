@@ -14,7 +14,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.github.MaaxGr:KotlinUtils:Tag'
+    implementation 'com.github.MaaxGr:KotlinUtils:1.2.0'
 }
 ```
 
